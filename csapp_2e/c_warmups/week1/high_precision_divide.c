@@ -47,8 +47,8 @@ int main (int argc, char *argv[]) {
              }else{
                  resbit_counter++;
              }
-             resbit_number = resbit_counter++;
          }
+         resbit_number = resbit_counter++;
          // print out the result based on array
          printf("0.");
          int i;
