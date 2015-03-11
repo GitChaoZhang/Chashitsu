@@ -22,7 +22,7 @@ int main (int argc, char *argv[]) {
     int div_res;
     int resbit_counter = 0;
     if (argc != 2) {
-        printf("there should be only one argument with the formant a/b");
+        printf("there should be only one argument with the formant a/b\n");
         return 1;
     }
     // The input format would be a/b, truncate the input now
@@ -34,27 +34,25 @@ int main (int argc, char *argv[]) {
     token = strtok(NULL, tok_mark);
     strcpy(denom_str, token);
     denomitor = atoi(denom_str);
-    printf("numerator %d \n", numerator);
-    printf("denomitor %d \n", denomitor);
     
     if(  numerator < denomitor  && checkRange(numerator) && checkRange(denomitor) ){
          //The array to store the result
-         while (((div_res = ( numerator * 10 ) / denomitor) != 0) && resbit_counter < FLOAT_PRECISE) {
+         while (resbit_counter < FLOAT_PRECISE) {
+             div_res = (numerator * 10) / denomitor;
              res[resbit_counter] = div_res;
              numerator = numerator * 10 - div_res * denomitor;
              resbit_counter++;
          }
+         // print out the result based on array
          printf("0.");
          int i;
          for (i = 0 ;i < FLOAT_PRECISE ;i++) {
              printf("%d", res[i]);
          }
-     
          printf("\n");
-
-        return 0;
+         return 0;
     }else{
-        printf("invalid argumts");
+        printf("invalid argumts\n");
         return 1;
     }
 }
