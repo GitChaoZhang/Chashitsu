@@ -21,6 +21,7 @@ int main (int argc, char *argv[]) {
     int res[FLOAT_PRECISE] = {0};
     int div_res;
     int resbit_counter = 0;
+    int resbit_number;
     if (argc != 2) {
         printf("there should be only one argument with the formant a/b\n");
         return 1;
@@ -35,18 +36,23 @@ int main (int argc, char *argv[]) {
     strcpy(denom_str, token);
     denomitor = atoi(denom_str);
     
-    if(  numerator < denomitor  && checkRange(numerator) && checkRange(denomitor) ){
+    if (numerator < denomitor && checkRange(numerator) && checkRange(denomitor)) {
          //The array to store the result
          while (resbit_counter < FLOAT_PRECISE) {
              div_res = (numerator * 10) / denomitor;
              res[resbit_counter] = div_res;
              numerator = numerator * 10 - div_res * denomitor;
-             resbit_counter++;
+             if (div_res == 0 && numerator == 0) {
+                 break;
+             }else{
+                 resbit_counter++;
+             }
+             resbit_number = resbit_counter++;
          }
          // print out the result based on array
          printf("0.");
          int i;
-         for (i = 0 ;i < FLOAT_PRECISE ;i++) {
+         for (i = 0 ;i < resbit_number ;i++) {
              printf("%d", res[i]);
          }
          printf("\n");
