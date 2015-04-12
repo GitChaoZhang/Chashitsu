@@ -39,14 +39,14 @@ void print_node(ListNode* node, int reverse_mode){
     if(!reverse_mode){
         if(node != NULL){
             if(node->next == NULL)
-                printf("%d\n", node->value);
+                printf("%d \n", node->value);
             else
                 printf("%d ", node->value);
         }
     }else{
         if(node != NULL){
             if(node->previous == NULL)
-                printf("%d\n", node->value);
+                printf("%d \n", node->value);
             else
                 printf("%d ", node->value);
         }
