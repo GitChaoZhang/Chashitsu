@@ -18,7 +18,7 @@ void add_node(List* pList, int number);
 void print_list(List* plist);
 void print_list_reverse(List* plist);
 
-int main(int argc, char const argv[]){
+int main(int argc, const char* argv[]){
     //read the input num until -1
     List input_list;
     input_list.head = input_list.tail = NULL;
